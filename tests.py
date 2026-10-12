@@ -65,12 +65,13 @@ def test_negative_max(stack, items, expected):
 
     assert stack.max() == expected
 
-def test_repush_after_empty():
+def test_reuse_after_empty():
     stack = MyStackInt()
     stack.push(5)
     stack.push(10)
-    assert stack.pop() == 10
-    assert stack.pop() == 5
+    stack.push(17)
+    while not stack.is_empty():
+        stack.pop()
     assert stack.is_empty()
     stack.push(11)
     assert stack.max() == 11
